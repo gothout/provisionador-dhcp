@@ -265,10 +265,9 @@ Inicie e habilite o serviço vsftpd:
 ```bash
 sudo systemctl start vsftpd
 sudo systemctl enable vsftpd
+```
 Permita o acesso ao vsftpd através do firewall, se necessário:
-
-bash
-Copy code
+```bash
 sudo firewall-cmd --add-service=ftp --permanent
 sudo firewall-cmd --reload
 ```
