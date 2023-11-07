@@ -14,7 +14,7 @@
 #Versão Beta(v1.1)
 - Modificação de layout para generico
 
-# Versão Beta(v1.2)
+#Versão Beta(v1.2)
 
 - Conexão com API (Fanvil e Grandstream) para provisionamento em nuvem de aparelhos.
 
