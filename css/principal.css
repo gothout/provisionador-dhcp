@@ -1,0 +1,219 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2e5032; /* Verde escuro para o fundo */
+    color: #e4e4e4; /* Cor de texto clara */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#mainContent {
+    flex: 1 0 auto;
+    background-color: #3f6a48; /* Um verde intermediário para o conteúdo principal */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px; /* Espaço entre o conteúdo principal e o rodapé */
+}
+
+.navbar {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    background-color: #4a7550; /* Mesma cor do rodapé */
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #c2d4c0; /* Uma cor mais clara para o hover */
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    opacity: 0.7;
+    padding: 10px 0;
+    background-color: #4a7550; /* verde */
+}
+
+.footer .text-muted {
+    color: #e4e4e4 !important;
+}
+
+.footer-icon {
+    margin-left: 5px;
+    font-size: 1.2em;
+}
+
+.logout-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2e5032;
+    text-align: center;
+}
+
+.logout-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #e4e4e4;
+}
+
+.logout-content p {
+    font-size: 1.2em;
+    color: #e4e4e4;
+}
+/*Container do Upload*/
+.upload-container {
+    background-color: #4a7550; /* Cor de fundo do container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.upload-container h3 {
+    color: #e4e4e4;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.custom-file-label::after {
+    content: "Procurar";
+}
+
+.btn-light {
+    background-color: #e4e4e4;
+    color: #4a7550;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-light:hover {
+    background-color: #c2d4c0;
+    color: #2e5032;
+}
+/* Estilos para o container de provisionamento */
+.provisioning-container {
+    background-color: #4a7550; /* Cor de fundo do container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px; /* ou qualquer valor que funcione melhor para o seu layout */
+    /* outros estilos conforme necessário */
+}
+
+.provisioning-container h3 {
+    color: #e4e4e4;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos para o modal */
+.modal .modal-dialog {
+    max-width: 600px; /* Define uma largura máxima para o modal */
+}
+
+.modal .modal-content {
+    background-color: #3f6a48; /* Cor de fundo do modal, semelhante ao conteúdo principal */
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* Bordas arredondadas para o modal */
+    color: #e4e4e4; /* Cor do texto dentro do modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao redor do modal */
+}
+
+.modal-header {
+    border-bottom-color: #4a7550; /* Cor da linha de separação */
+}
+
+.modal-header .close {
+    color: #e4e4e4; /* Cor do botão de fechar (X) */
+    opacity: 1; /* Torna o botão totalmente opaco */
+}
+
+.modal-title {
+    font-weight: bold; /* Título em negrito */
+    font-size: 1.5em; /* Tamanho do título */
+}
+
+.modal-body {
+    background-color: #2e5032; /* Um verde mais escuro para o corpo do modal */
+    border-radius: 0 0 8px 8px; /* Bordas arredondadas na parte inferior */
+}
+
+.modal-footer {
+    background-color: #4a7550; /* Cor de fundo do rodapé do modal */
+    border-top: none; /* Remove a borda superior */
+    text-align: right; /* Alinha os botões à direita */
+}
+
+/* Estilos para os botões dentro do modal */
+.modal-footer .btn {
+    background-color: #e4e4e4; /* Cor de fundo dos botões */
+    color: #4a7550; /* Cor do texto dos botões */
+}
+
+.modal-footer .btn:hover {
+    background-color: #c2d4c0; /* Cor de fundo dos botões ao passar o mouse */
+    color: #2e5032; /* Cor do texto dos botões ao passar o mouse */
+}
+
+/* Estilos para a lista de arquivos */
+.file-list-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.file-list-container li {
+    background-color: #e4e4e4;
+    color: #4a7550;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-list-container button.viewFileBtn {
+    background-color: #4a7550;
+    color: #e4e4e4;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.file-list-container button.viewFileBtn:hover {
+    background-color: #3f6a48;
+}
+
+/* Estilos para o modal de visualização de arquivo */
+#fileViewModal .modal-dialog {
+    max-width: 90%; /* Define a largura máxima do modal para 90% da largura da janela */
+}
+
+#fileViewModal .modal-content {
+    background-color: #3f6a48; /* Cor de fundo do modal, semelhante ao conteúdo principal */
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* Bordas arredondadas para o modal */
+    color: #ffffff; /* Cor do texto dentro do modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao redor do modal */
+}
+
+#fileViewModal .modal-body {
+    overflow-y: auto; /* Permite rolagem vertical se o conteúdo for muito longo */
+    overflow-x: hidden; /* Evita rolagem horizontal */
+    max-height: 60vh; /* Define uma altura máxima para o corpo do modal */
+}
+
+#fileViewModal .modal-body pre {
+    font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada para melhor visualização */
+    color: #ffffff; /* Cor do texto para branco */
+    margin: 0; /* Remove margens padrão */
+    white-space: pre-wrap; /* Quebra de linha automática para conteúdo longo */
+    word-wrap: break-word; /* Quebra palavras longas para evitar rolagem horizontal */
+}
