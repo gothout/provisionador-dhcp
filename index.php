@@ -18,7 +18,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <title>ProvSigma</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="/css/principal.css">
     <link rel="icon" href="/img/favicon-sigmacom.png" type="image/png">
 </head>
 
@@ -34,7 +34,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="arquivosLink">Arquivos</a>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <a class="nav-link" href="#" id="logLink">Log</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/php-scrp/logout.php" id="logoutBtn">Logout</a>
+                        <a class="nav-link" href="/php-scrp/index/logout.php" id="logoutBtn">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -70,10 +70,28 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="d-flex flex-column align-items-center">
             <button onclick="provisionFanvilX1SG()" class="btn btn-light mb-3">Provisionar FanvilX1SG - Xcontact</button>
             <button onclick="provisionAudiocode()" class="btn btn-light mb-3">Provisionar AudioCode-405HD - Xcontact</button>
-
+			<button onclick="provisionAudiocodevoice()" class="btn btn-light mb-3">Provisionar AudioCode-405HD - VoiceManager TEMPORARIO</button>
             </div>
         </div>
-
+        <!-- Modal para Audiocode405HD Voice -->
+        <div class="modal fade" id="audiocodevoiceModal" tabindex="-1" role="dialog" aria-labelledby="audiocodevoiceModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="audiocodevoiceModalLabel">Provisionamento de Audiocode 405HD - Voice</h5>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="audiocodevoiceProvisioningStatus">Iniciando provisionamento...</p>
+                        <!-- Adicione outros elementos interativos ou informativos conforme necessário -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeAudiocode405hdVoiceModalButton">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
         <!-- Modal para Audiocode405HD -->
         <div class="modal fade" id="audiocodeModal" tabindex="-1" role="dialog" aria-labelledby="audiocodeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -87,7 +105,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <!-- Adicione outros elementos interativos ou informativos conforme necessário -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModalButton">Fechar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeAudiocode405hdModalButton">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -105,11 +123,36 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <!-- Adicione outros elementos interativos ou informativos conforme necessário -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModalButton">Fechar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeFanvilX1SGModalButton">Fechar</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="file-list-container" style="display: none;">
+            <h3>Arquivos em /provisionador:</h3>
+            <ul id="fileList"></ul>
+        </div>
+
+        <!-- Modal para visualizar o arquivo -->
+        <div class="modal fade" id="fileViewModal" tabindex="-1" role="dialog" aria-labelledby="fileViewModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document"> <!-- Aqui adicionamos a classe modal-lg -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="fileViewModalLabel">Visualizar Arquivo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <pre id="fileContent"></pre> <!-- Usamos a tag <pre> aqui -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer mt-auto py-2 bg-dark">
             <div class="container">
                 <span class="text-muted">@Desenvolvido por Lucas C.</span>
@@ -117,11 +160,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <i class="fas fa-code"></i>
                 </span>
             </div>
+            
+
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/js/upload-object-buttons.js"></script> <!--Script para os objetos e upload-->
         <script src="/js/fanvilx1sg-provisionamento.js"></script> <!--Script interação para provisionador-->
         <script src="/js/audiocode405-provisionamento.js"></script> <!--Script interação para provisionador-->
+        <script src="/js/audiocode405voice-provisionamento.js"></script> <!--Script interação para provisionador-->  
     </body>
 </html>

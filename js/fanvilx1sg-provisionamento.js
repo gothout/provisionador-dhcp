@@ -9,7 +9,7 @@
                 // Inicia o pedido AJAX
                 $.ajax({
                     type: 'POST',
-                    url: '/php-scrp/fanvilx1sg.php', // Chamada para o script específico de Fanvil
+                    url: '/php-scrp/provisionador/fanvilx1sg.php', // Chamada para o script específico de Fanvil
                     // Envie quaisquer dados necessários para o script PHP como parte da requisição
                     data: { 
                         // possíveis dados a serem enviados 

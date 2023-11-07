@@ -162,3 +162,58 @@ body {
     background-color: #c2d4c0; /* Cor de fundo dos botões ao passar o mouse */
     color: #2e5032; /* Cor do texto dos botões ao passar o mouse */
 }
+
+/* Estilos para a lista de arquivos */
+.file-list-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.file-list-container li {
+    background-color: #e4e4e4;
+    color: #4a7550;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-list-container button.viewFileBtn {
+    background-color: #4a7550;
+    color: #e4e4e4;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.file-list-container button.viewFileBtn:hover {
+    background-color: #3f6a48;
+}
+
+/* Estilos para o modal de visualização de arquivo */
+#fileViewModal .modal-dialog {
+    max-width: 90%; /* Define a largura máxima do modal para 90% da largura da janela */
+}
+
+#fileViewModal .modal-content {
+    background-color: #3f6a48; /* Cor de fundo do modal, semelhante ao conteúdo principal */
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* Bordas arredondadas para o modal */
+    color: #ffffff; /* Cor do texto dentro do modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao redor do modal */
+}
+
+#fileViewModal .modal-body {
+    overflow-y: auto; /* Permite rolagem vertical se o conteúdo for muito longo */
+    overflow-x: hidden; /* Evita rolagem horizontal */
+    max-height: 60vh; /* Define uma altura máxima para o corpo do modal */
+}
+
+#fileViewModal .modal-body pre {
+    font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada para melhor visualização */
+    color: #ffffff; /* Cor do texto para branco */
+    margin: 0; /* Remove margens padrão */
+    white-space: pre-wrap; /* Quebra de linha automática para conteúdo longo */
+    word-wrap: break-word; /* Quebra palavras longas para evitar rolagem horizontal */
+}
