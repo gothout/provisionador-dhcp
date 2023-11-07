@@ -1,3 +1,25 @@
+## Atualizações (Concluidas)
+
+#Versão Beta(v1.0)
+- É possivel criar arquivos de provisionamento para o /provisionador
+- Trabalho em conjunto com servidor TFTP e FTP
+- Log de arquivos criados em Arquivo no home da pagina
+
+## Atualizações futuras (Em projeto)
+
+#Versão Beta(v1.1)
+- Esqueci a senha para login, aonde será enviado e-mail com requisição para alterar senha.
+- Log de criação de arquivo.
+
+#Versão Beta(v1.1)
+- Modificação de layout para generico
+
+# Versão Beta(v1.2)
+
+- Conexão com API (Fanvil e Grandstream) para provisionamento em nuvem de aparelhos.
+
+### Documento informativo
+
 - Responsável pelo documento: Lucas Daniel Chaves
 
 - Responsável pelo desenvolvimento do sistema: Lucas Daniel Chaves
@@ -119,7 +141,7 @@ Coloque seus scripts PHP no diretório correto (geralmente é /var/www/html no C
 Assegure-se de que os scripts Python em /py têm permissões de execução.
 Depois de ter seguido todos os passos necessários e ter colocado os arquivos nos locais corretos, seu sistema deve estar pronto para ser utilizado.
 
-## Por favor, note que algumas configurações podem variar dependendo de como o seu ambiente de rede está configurado e quaisquer restrições de segurança que você possa ter. Este guia é baseado em uma configuração padrão do CentOS 7.
+<span style="color: red;">Por favor, note que algumas configurações podem variar dependendo de como o seu ambiente de rede está configurado e quaisquer restrições de segurança que você possa ter. Este guia é baseado em uma configuração padrão do CentOS 7.</span>
 
 Este guia irá ajudá-lo a instalar e configurar as dependências necessárias para o seu serviço, bem como configurar os logs e auditorias de serviços específicos como TFTP e FTP em um sistema Linux.
 
