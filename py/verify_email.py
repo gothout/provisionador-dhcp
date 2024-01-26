@@ -22,8 +22,8 @@ def generate_reset_code():
 def send_email(to_email, reset_code):
     smtp_server = 'smtp.office365.com'  # Defina essas variáveis dentro da função
     smtp_port = 587
-    from_email = 'lucas.chaves@wonit.com.br'  # Defina essas variáveis dentro da função
-    from_password = 'Jak27554'  # Mova para uma variável de ambiente ou configuração segura
+    from_email = ''  # Defina essas variáveis dentro da função
+    from_password = ''  # Mova para uma variável de ambiente ou configuração segura
 
     # Criando um MIMEMultipart para suportar texto e imagem
     msg = MIMEMultipart('alternative')
