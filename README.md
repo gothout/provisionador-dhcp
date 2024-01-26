@@ -5,15 +5,13 @@
 - Trabalho em conjunto com servidor TFTP e FTP
 - Log de arquivos criados em Arquivo no home da pagina
 
-## Atualizações futuras (Em projeto)
-
 #Versão Beta(v1.1)
 - Esqueci a senha para login, aonde será enviado e-mail com requisição para alterar senha.
-- Log de criação de arquivo.
 
 #Versão Beta(v1.1)
 - Modificação de layout para generico
 
+## Atualizações futuras (Em projeto)
 #Versão Beta(v1.2)
 
 - Conexão com API (Fanvil e Grandstream) para provisionamento em nuvem de aparelhos.
@@ -122,6 +120,16 @@ Funciona de maneira semelhante ao audiocode405hd.py, mas é específico para o p
 
 - (Ainda em tratamento) verify_email: Responsável para criar código aleatorio e temporario para reset de senha que será criado no banco de dados, e resposável para tratar no front-end quando há já gerado, quando não foi gerado ainda e quando o usuario não existe.
 
+- code_verify.py
+Verifica o codigo para reset de senha.
+
+- upt_id.py
+Efetua a atualização da senha do usuario no banco de dados.
+
+- verify_email.py
+Envia codigo para reset de senha no e-mail do usuario
+
+
 #### Dentro da pasta /js:
 - upload-object-buttons.js:
 Controla a lógica do lado do cliente para fazer upload de arquivos e interagir com a UI. Ele também gerencia a visibilidade dos controles na interface do usuário, dependendo do estado do processo de upload/provisionamento.
@@ -133,6 +141,16 @@ Estes arquivos JavaScript lidam com a lógica específica do lado do cliente par
 Esta pasta é utilizada como um armazenamento temporário para os arquivos gerados durante o processo de provisionamento. Os scripts dentro de /php-scrp salvam os arquivos aqui para que os scripts Python em /py possam acessá-los e utilizá-los para o provisionamento.
 
 Cada um desses arquivos desempenha um papel específico dentro do ecossistema do aplicativo, contribuindo para a funcionalidade geral de provisionamento automatizado de dispositivos. A modularidade do sistema facilita a manutenção, a escalabilidade e a compreensão do fluxo de trabalho do aplicativo.
+
+
+#### Dentro da pasta /flash-api:
+
+- Criado uma api que faz webscraping da pagina http://www.consultaoperadora.com.br/site2015/resposta.php para auxiliar o usuario da plataforma a pesquisar a operadora responsável de algum número.
+
+
+#### Dentro da pasta /registrar:
+
+- Pasta criada para o dono do servidor hospedado do sistema para criar usuarios no banco de dados.
 
 
 # Tutorial de Configuração do Servidor
