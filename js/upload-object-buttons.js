@@ -29,9 +29,10 @@ $(document).ready(function () {
             success: function (response) {
                 // Remova o indicador visual de carregamento aqui, se aplicável
                 if (response === 'success') {
-                    // Se o upload foi bem-sucedido, exiba as opções de provisionamento
+                    // Se o upload foi bem-sucedido, exiba as opções de provisionamento     
                     $("#provisioningContainer").show();
                     $("#uploadButton").hide();
+                	$(".info-container").hide();
                     $("#cancelButton").show();
                     $("#fileToUpload").prop('disabled', true); // Desativa o input de arquivo.
                 } else {
@@ -50,6 +51,7 @@ $(document).ready(function () {
         // Reverte tudo para o estado original.
         $("#provisioningContainer").hide();
         $("#uploadButton").show();
+    	$(".info-container").show();
         $(this).hide(); // Esconde o botão de cancelar.
         $("#fileToUpload").prop('disabled', false); // Reativa o input de arquivo.
         $('.custom-file-label').text("Escolher arquivo"); // Reseta o label.
@@ -59,14 +61,14 @@ $(document).ready(function () {
         // Por exemplo, você pode querer removê-lo do servidor ou fazer outras limpezas.
     });
 
-    // Quando o botão de fechar do modal é clicado, esta função será executada.
-    $("#closeAudiocode405hdVoiceModalButton, #closeAudiocode405hdModalButton, #closeFanvilX1SGModalButton, #NaoTiraPqBugaPraFecharOmodel").click(function () {
+    // // ANTICLAYTIN ERROR Quando o botão de fechar do modal é clicado, esta função será executada.
+    $("#closeAudiocode405hdVoiceModalButton, #closeAudiocode405hdModalButton, #closeFanvilX1SGModalButton, #closeFanvilX1SGvoiceModalButton, #NaoTiraPqBugaPraFecharOmodel").click(function () {
         // Aqui, você pode adicionar uma chamada AJAX para um script PHP que limpará a sessão.
         $.ajax({
             type: 'POST',
             url: '/php-scrp/index/clear_session.php',  // Este é o script PHP que irá lidar com a limpeza da sessão.
             success: function (response) {
-                // Se a sessão foi limpa com sucesso, redirecionamos para a página inicial.
+                //// ANTICLAYTIN ERROR  Se a sessão foi limpa com sucesso, redirecionamos para a página inicial.
                 window.location.href = 'index.php';
             },
             error: function (response) {
@@ -79,9 +81,9 @@ $(document).ready(function () {
 // Quando o link "Arquivos" é clicado.
 $("#arquivosLink").click(function (e) {
     e.preventDefault();
-
-    // Esconde o container de upload
-    $(".upload-container, .provisioning-container").hide();
+	document.title = "WebGui - Arquivos";
+    // Esconde o container de upload 
+    $(".upload-container, .provisioning-container, .info-container, .licencas-container, .webgui-container, .atualizacoes-container").hide();
 
     // Faz uma chamada AJAX para obter a lista de arquivos
     $.ajax({
@@ -108,6 +110,96 @@ $("#arquivosLink").click(function (e) {
         }
     });
 });
+
+// ANTICLAYTIN ERROR Quando o link "Home" é clicado.
+$("#homeLink, .navbar-brand").click(function (e) {
+    e.preventDefault();
+	document.title = "WebGui - Auriwon";
+    $(".upload-container, .info-container").show();
+    $(".file-list-container, .licencas-container, .webgui-container, .atualizacoes-container").hide();
+
+    // Aciona um clique no botão de cancelar automaticamente.
+    $("#cancelButton").click();
+});
+
+// ANTICLAYTIN ERROR Quando o link "Licenças Xcontact" é clicado.
+$("#licencasLink").click(function (e) {
+    e.preventDefault();
+	document.title = "WebGui - Xcontact";
+    // Esconde o container de upload 
+    $(".upload-container, .provisioning-container, .info-container, .file-list-container, .webgui-container, .atualizacoes-container").hide();
+	$('.licencas-container').show();
+});
+
+// ANTICLAYTIN ERROR Quando o link "Webgui" é clicado.
+$("#webguiLink").click(function (e) {
+    e.preventDefault();
+	document.title = "WebGui - Menu";
+    // Esconde o container de upload 
+    $(".upload-container, .provisioning-container, .info-container, .file-list-container, .licencas-container, .atualizacoes-container").hide();
+	$('.webgui-container').show();
+});
+
+// ANTICLAYTIN ERROR Quando o link "Atualizações" é clicado.
+$("#linkAtualizacoes").click(function (e) {
+    e.preventDefault();
+    document.title = "WebGui - Atualizações";
+    $(".upload-container, .provisioning-container, .info-container, .file-list-container, .licencas-container, .webgui-container").hide();
+    $('.atualizacoes-container').show();
+
+    $.ajax({
+        url: '/atualizacoes/att.md', // Caminho para o arquivo Markdown
+        success: function(data) {
+            // Aqui você precisará converter o Markdown em HTML
+            var htmlContent = converterMarkdownParaHTML(data);
+            $('.atualizacoes-container').html(htmlContent);
+        },
+        error: function() {
+            $('.atualizacoes-container').html("<p>Erro ao carregar as atualizações.</p>");
+        }
+    });
+});
+
+// ANTICLAYTIN ERROR Quando o link "Webgui ENVIAR" é clicado.
+$(document).ready(function() {
+    // Manipulador de eventos de clique para o botão de consulta
+    $("#btn-consulta").click(function() {
+        // Obter o número do telefone
+        var numeroTelefone = $("#numero-telefone").val();
+
+        // Remover caracteres não numéricos
+        var numeroApenasNumeros = numeroTelefone.replace(/\D/g, '');
+
+        // Verificar se o número é válido (adicione sua própria lógica de validação aqui se necessário)
+        if (numeroApenasNumeros.length >= 10) { // Exemplo: verifica se tem pelo menos 10 dígitos
+            // Mostrar mensagem de carregamento
+           	$("#loading").show();
+        	$("#resultado-consulta").hide();
+
+            // Fazer a requisição AJAX
+            $.get("/php-scrp/busca_operadora.php", { numero: numeroApenasNumeros })
+                .done(function(data) {
+                    // Processar a resposta aqui
+            		$("#loading").hide();
+                    $("#resultado-consulta").html(data); // Assegure-se de que esta linha está presente e correta
+            		$("#resultado-consulta").show(); // Isso tornará a div visível após os dados serem inseridos
+
+                   // $("#resultado-consulta").html(data); // Adiciona os dados retornados ao elemento com ID 'resultado-consulta'
+                })
+                .fail(function() {
+                    alert("Erro ao buscar informações da operadora.");
+                })
+                .always(function() {
+                    // Remover a mensagem de carregamento
+                    $("#loading-message").remove();
+                });
+        } else {
+            alert("Por favor, digite um número de telefone válido.");
+        }
+    });
+});
+
+
 
 $(document).on('click', '.viewFileBtn', function() {
     var filename = $(this).data('filename');

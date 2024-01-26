@@ -5,6 +5,8 @@ import smtplib
 import random
 import string
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart  # Importação adicionada
+from email.mime.image import MIMEImage  # Importação adicionada
 from datetime import datetime, timedelta
 
 # Capturando o e-mail como um argumento da linha de comando
@@ -18,16 +20,51 @@ def generate_reset_code():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
 
 def send_email(to_email, reset_code):
-    smtp_server = ''
+    smtp_server = 'smtp.office365.com'  # Defina essas variáveis dentro da função
     smtp_port = 587
-    from_email = ''
-    from_password = ''
+    from_email = 'lucas.chaves@wonit.com.br'  # Defina essas variáveis dentro da função
+    from_password = 'Jak27554'  # Mova para uma variável de ambiente ou configuração segura
 
-    msg = MIMEText(f'Seu código de redefinição é: {reset_code}')
+    # Criando um MIMEMultipart para suportar texto e imagem
+    msg = MIMEMultipart('alternative')
     msg['Subject'] = 'Redefinição de Senha'
     msg['From'] = from_email
     msg['To'] = to_email
 
+    # Corpo do e-mail
+    email_body = f'''
+        <html>
+        <body>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 600px; margin: auto;">
+            <tr>
+                <td style="background-color: #ffffff; padding: 20px;">
+                <table align="center" cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
+                    <tr>
+                    <td style="padding-right: 10px; text-align: center; vertical-align: middle;">
+                        <!-- Atualize o 'src' para a URL da imagem hospedada publicamente -->
+                        <img src="https://uploaddeimagens.com.br/images/004/682/581/original/favicon-sigmacom.png?1701782860" width="100" height="auto" style="max-width: 100px; height: auto;" alt="Logo da SigmaCom">
+                    </td>
+                    <td style="text-align: left; vertical-align: middle;">
+                        <span style="font-size: 24px; font-weight: bold; color: #6A5ACD; font-family: 'Arial', sans-serif;">Auriwon - Webgui</span>
+                    </td>
+                    </tr>
+                </table>
+                <p style="font-family: 'Arial', sans-serif; margin-top: 20px;">Seu código de redefinição é: <strong>{reset_code}</strong></p>
+                <p style="font-family: 'Arial', sans-serif;">Atenciosamente,</p>
+                <p style="font-family: 'Arial', sans-serif;">Lucas Chaves</p>
+                <p style="font-family: 'Arial', sans-serif;">
+                    <a href="https://github.com/gothout" style="text-decoration: none; color: #6A5ACD;">GitHub</a> |
+                    <a href="https://www.linkedin.com/in/lucasdchaves/" style="text-decoration: none; color: #6A5ACD;">LinkedIn</a>
+                </p>
+                </td>
+            </tr>
+            </table>
+        </body>
+        </html>
+    '''
+
+    msg.attach(MIMEText(email_body, 'html'))
+    
     try:
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()

@@ -1,13 +1,42 @@
+@keyframes animatedBackground {
+  0% { background-position: 0 0; }
+  25% { background-position: 100% 0; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0 100%; }
+  100% { background-position: 0 0; }
+}
+
 body {
+  font-family: Arial, sans-serif;
+  /* Slower, smoother gradient animation with a refined color palette */
+  background: linear-gradient(40deg, #00D4FF, #0f3443, #00D4FF, #34e89e, #0f3443);
+  background-size: 400% 400%;
+  /* Longer duration for a slower animation */
+  animation: animatedBackground 30s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #000000a1;
+  margin: 0;
+}
+
+#forgotBtn {
+    color: #ffffffc7; 
+    text-decoration: none; 
+    font-size: 16px; 
     font-family: Arial, sans-serif;
-    background-color: #2e5032; /* verde escuro */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    min-height: 100vh; /* Ajuste para garantir que o conteúdo ocupe toda a altura da janela */
-    color: #e4e4e4;
-    margin: 0;
+    background-color: #363795b8; 
+    padding: 10px 15px; 
+    border-radius: 5px;  
+    display: inline-block; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+#forgotBtn:hover {
+    background-color: #494aa7; 
+    color: #ffffff; 
 }
 
 .login-container {
@@ -20,27 +49,29 @@ body {
 }
 
 .logo {
-    width: 150px; /* ou qualquer tamanho que você desejar */
+    width: 200px; /* ou qualquer tamanho que você desejar */
     margin-bottom: 20px;
 }
 
 
 form {
-    background-color: #4a7550; /* verde */
+    /* Gradient background for the form to match the cosmic theme */
+    background: linear-gradient(to left, #005c9794, #36379500); 
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
-    display: flex; /* Transforma o form em flex container */
-    flex-direction: column; /* Organiza os elementos em coluna */
-    align-items: center; /* Centraliza os elementos horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
-    width: 80%; /* Define uma largura para os labels */
+    width: 85%; /* Define uma largura para os labels */
     text-align: left; /* Alinha o texto à esquerda */
+	color: #000000a1;
 }
 
 input[type="text"], input[type="password"] {
@@ -49,7 +80,7 @@ input[type="text"], input[type="password"] {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    background-color: #e4e4e4;
+    background-color: #ffffffb8;
     color: #2e5032; /* verde escuro */
 }
 
@@ -58,14 +89,14 @@ input[type="submit"] {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #2e5032; /* verde escuro */
+    background-color: #363795cf; /* A professional dark blue */
     color: #e4e4e4;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
-    background-color: #1e3822; /* um verde ainda mais escuro para o hover */
+    background-color: #282f6b; /* A darker shade for hover */
 }
 
 footer {
@@ -73,13 +104,14 @@ footer {
     text-align: center;
     opacity: 0.7;
     padding: 10px 0;
-    background-color: #4a7550; /* verde */
+    background-color: #353a50;
     position: absolute; /* Posiciona o rodapé no final da página */
     bottom: 0;
     left: 0;
 }
 
 footer p {
+	color: #ffffffeb;
     margin: 0;
     font-size: 0.9em;
 }

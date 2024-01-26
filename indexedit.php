@@ -15,20 +15,18 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebGui - Auriwon</title>
+    <title>ProvSigma</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/css/principal.css">
     <link rel="icon" href="/img/favicon-sigmacom.png" type="image/png">
 </head>
 
 <body>
-	
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="/img/favicon-sigmacom.png" alt="ProvSigma Logo" width="30" height="30" class="d-inline-block align-top">
-            Auriwon
+            ProvSigma
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,28 +34,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" id="homeLink">Home</a>
+                    <a class="nav-link" href="/index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="arquivosLink">Arquivos</a>
                 </li>
-
-				<!-- Novo somente para Sigmacom -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="licencasLink">Xcontact</a>
-                </li>
-				<!-- Novo somente para Sigmacom -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="webguiLink">Web-Gui</a>
-                </li>
-
-
             </ul>
             <ul class="navbar-nav">
                 <ul class="navbar-nav">
-				    <li class="nav-item">
-                        <a class="nav-link" href="#" id="linkAtualizacoes">Atualizações</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="logLink">Log</a>
                     </li>
@@ -67,23 +51,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 </ul>
         </div>
     </nav>
-
-    <div class="webgui-container" style="display: none;">
-        <div class="consulta-operadora">
-            <h3>Consulta operadora</h3>
-            <input type="tel" id="numero-telefone" placeholder="Digite o número (com DDD)">
-            <button id="btn-consulta">Enviar</button>
-        </div>
-		<div id="loading" style="display: none;"><i class="material-icons md-48">autorenew</i></div>
-        <!-- Elemento para exibir os resultados -->
-        <div id="resultado-consulta" style="display: none;"></div>
-    </div>
-
-
-    <div class="licencas-container" style="display: none;">
-        <h3>EM DESENVOLVIMENTO</h3>
-    </div>
-
 
     <div class="upload-container">
         <h3>Selecione um arquivo para provisionamento</h3>
@@ -100,7 +67,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
     <div class="info-container">
         <div class="icon-section">
-            <a href="/templates/template.txt" download="template.txt">
+            <a href="/template.txt" download="template.txt">
                 <img src="/img/download_template.png" alt="Ícone de Download" />
             </a>
         </div>
@@ -122,7 +89,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="d-flex flex-column align-items-center">
             <button onclick="provisionFanvilX1SG()" class="btn btn-light mb-3">Provisionar FanvilX1SG - Xcontact</button>
             <button onclick="provisionAudiocode()" class="btn btn-light mb-3">Provisionar AudioCode-405HD - Xcontact</button>
-            <button onclick="provisionFlyingVoicefip14g()" class="btn btn-light mb-3">Provisionar FlyingVoice FIP14G - Xcontact</button>
             <button onclick="provisionAudiocodevoice()" class="btn btn-light mb-3">Provisionar AudioCode-405HD - VoiceManager TEMPORARIO</button>
             <button onclick="provisionFanvilX1SGvoice()" class="btn btn-light mb-3">Provisionar FanvilX1SG - VoiceManager TEMPORARIO</button>
         </div>
@@ -145,26 +111,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </div>
         </div>
     </div>
-
-    <!-- Modal para Flying Voice FIP14G Xcontact -->
-    <div class="modal fade" id="flyingvoicefip14gModal" tabindex="-1" role="dialog" aria-labelledby="flyingvoicefip14gModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="flyingvoicefip14gModalLabel">Flying Voice FIP14G - Xcontact</h5>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="flyingvoicefip14gProvisioningStatus">Iniciando provisionamento...</p>
-                    <!-- Adicione outros elementos interativos ou informativos conforme necessário -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeflyingvoicefip14gButton">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Modal para Audiocode405HD -->
     <div class="modal fade" id="audiocodeModal" tabindex="-1" role="dialog" aria-labelledby="audiocodeModalLabel" aria-hidden="true">
@@ -221,7 +167,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         </div>
     </div>
     <div class="file-list-container" style="display: none;">
-        <h3>Arquivos de provisionamento, que serão deletados em 2 dias:</h3>
+        <h3>Arquivos em /provisionador:</h3>
         <ul id="fileList"></ul>
     </div>
 
@@ -244,39 +190,23 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </div>
         </div>
     </div>
-      <!-- Atualizações -->                  
-                        
-    <div class="atualizacoes-container" style="display: none;">
-        
-    </div>  
-                        
-                        
-                        
-                        
+
     <footer class="footer mt-auto py-2 bg-dark">
         <div class="container">
-            <a href="https://gothout.github.io/" class="text-muted" target="_blank">
-                Desenvolvido por Lucas.C
-            </a>
+            <span class="text-muted">@Desenvolvido por Claytinho da Silva Sauro</span>
             <span class="footer-icon">
-                <a href="https://www.linkedin.com/in/lucasdchaves" target="_blank">
-                    <i class="fab fa-linkedin" style="color: #0077b5; font-size: 24px;"></i>
-                </a>
-                <a href="https://github.com/gothout" target="_blank">
-                    <i class="fab fa-github" style="color: black; font-size: 24px;"></i>
-                </a>
+                <i class="fas fa-code"></i>
             </span>
         </div>
-    </footer>   
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!--Script para atualizacoes em markdown-->
-    <script src="/js/markdown.js"></script> <!--Script para markdown-->
+
+
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="/js/upload-object-buttons.js"></script> <!--Script para os objetos e upload-->
     <script src="/js/fanvilx1sg-provisionamento.js"></script> <!--Script interação para provisionador-->
     <script src="/js/fanvilx1sgvoice-provisionamento.js"></script> <!--Script interação para provisionador-->
     <script src="/js/audiocode405-provisionamento.js"></script> <!--Script interação para provisionador-->
-    <script src="/js/flyingvoicefip14gxcontact-provisionamento.js"></script> <!--Script interação para provisionador-->
     <script src="/js/audiocode405voice-provisionamento.js"></script> <!--Script interação para provisionador-->
 </body>
 

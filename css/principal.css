@@ -1,13 +1,42 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.material-icons.md-48 { /* Classe para aumentar o tamanho do ícone */
+  font-size: 48px; /* ou o tamanho que você deseja */
+  height: 48px;
+  width: 48px;
+  display: block; /* Mude para block para preencher o espaço horizontal */
+  margin: auto; /* Isso centraliza o ícone horizontalmente */
+  animation: spin 2s linear infinite;
+}
+
+#loading {
+  display: flex;
+  justify-content: center; /* Isso centraliza o ícone dentro da div */
+  align-items: center; /* Isso alinha o ícone verticalmente */
+  height: 100px; /* Defina a altura para preencher o espaço verticalmente */
+  width: 120px;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #2e5032; /* Verde escuro para o fundo */
-    color: #e4e4e4; /* Cor de texto clara */
+    background: linear-gradient(60deg, #4974c1, #444e6d, #342f5b, #1b2b5a, #405b8b);
+    animation: animatedBackground 30s ease infinite;
+    background-size: 200% 200%;
+    color: #e4e4e4;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+
 
 #mainContent {
     flex: 1 0 auto;
@@ -70,8 +99,8 @@ body {
 }
 /*Container do Upload*/
 .upload-container {
-    background-color: #4a7550; /* Cor de fundo do container */
-    padding: 20px;
+    background: linear-gradient(to left, #005c972b, #4748a130);
+    padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
@@ -83,24 +112,302 @@ body {
     text-align: center;
 }
 
+/*Container do Info*/
+.info-container {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px; /* Espaço adicional com o rodapé */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between; /* Espaçamento igual entre os elementos */
+    padding: 20px;
+    background: linear-gradient(to left, #005c972b, #4748a130);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-container h3 {
+    color: #e4e4e4;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.icon-section, .text-section, .image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	margin: 0 20px;
+}
+
+.text-section {
+    align-items: flex-start; /* Alinha o texto à esquerda */
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    padding: 20px 40px; /* Espaço interno para não colar no ícone/imagem */
+}
+
+.icon-section img {
+    max-width: 200px; /* Ajuste o tamanho conforme necessário */
+    margin-bottom: 10px;
+}
+
+.image-section {
+    flex: 1; /* Dá flexibilidade para a imagem crescer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Previne que a imagem saia da div */
+}
+
+.image-section img {
+    max-width: 100%; /* Ajusta a imagem para o máximo da div */
+    max-height: 300px; /* Ajuste a altura máxima conforme necessário */
+    object-fit: contain; /* Mantém as proporções da imagem */
+    flex-shrink: 0; /* Evita que a imagem encolha */
+}
+
+/* Ajuste para o ícone de download */
+.icon-section img {
+    max-width: 300px; /* Remove a restrição de tamanho máximo */
+    width: 100%; /* Faz o ícone preencher o espaço */
+    cursor: pointer;
+}
+
+.icon-section p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Estilo para quando o cursor está sobre a imagem de download */
+.icon-section img:hover {
+    opacity: 0.8; /* Efeito de transparência ao passar o mouse */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon-section, .text-section, .image-section {
+        align-items: center;
+        margin: 10px 0; /* Espaço vertical entre os elementos */
+    }
+
+    .text-section {
+        padding: 0; /* Remove o preenchimento nas telas menores */
+    }
+}
+
+/* Estilos específicos para telas grandes */
+@media (min-width: 1200px) {
+    .info-container {
+    	
+        justify-content: space-between; /* Distribui o espaço mais uniformemente */
+    }
+    
+    .icon-section, .text-section, .image-section {
+        flex: 1; /* Permite que os itens cresçam, mas de forma limitada */
+        padding: 20px; /* Adiciona um preenchimento para evitar que os itens grudem nas bordas */
+    }
+
+    .icon-section {
+    	
+        align-items: center; /* Alinha o ícone à esquerda */
+    }
+
+    .text-section {
+        align-items: center; /* Centraliza o texto */
+        padding: 20px 40px; /* Aumenta o preenchimento nas laterais do texto */
+    }
+
+    .image-section {
+        align-items: flex-end; /* Alinha a imagem à direita */
+    }
+}
+
+.text-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2em; /* Tamanho do título */
+    color: #ffffff; /* Cor do título */
+}
+
+.text-section p {
+    margin-bottom: 10px; /* Espaçamento entre parágrafos */
+    text-align: justify; /* Justifica o texto */
+}
+
+.text-section strong {
+    color: #dcdcdc; /* Destaque para informações importantes */
+}
+/*Fim do Container do Info*/
+
+
+/* Estilos gerais para o container atualizações */
+/* Estilos base para o container das atualizações */
+.atualizacoes-container {
+    color: #f5f5f5;
+    background-color: #3333335c;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 30px; /* Espaçamento entre seções */
+}
+
+/* Títulos das seções */
+.atualizacoes-container h2 {
+    color: #adcaff;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #444;
+}
+
+/* Títulos das versões, mais sutis que os títulos das seções */
+.atualizacoes-container h3 {
+    color: #ccc;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Estilos para listas de itens, com um ícone de marcador personalizado */
+.atualizacoes-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.atualizacoes-container ul li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.atualizacoes-container ul li::before {
+    content: "•";
+    color: #adcaff; /* Cor do marcador */
+    padding-right: 5px;
+}
+
+/* Links estilizados para maior destaque */
+.atualizacoes-container a {
+    color: #4e9af1;
+    text-decoration: none;
+}
+
+.atualizacoes-container a:hover {
+    text-decoration: underline;
+}
+
+/* Separar seções com uma borda ou sombra */
+.atualizacoes-container:not(:last-child) {
+    border-bottom: 1px solid #444;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilos gerais para o container atualizações final*/
+
+/*Container do licencas*/
+.licencas-container {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px; /* Espaço adicional com o rodapé */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between; /* Espaçamento igual entre os elementos */
+    padding: 20px;
+    background-color: linear-gradient(to left, #005c972b, #4748a130);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.licencas-container h3 {
+    color: #e4e4e4;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/*Fim do Container do licencas*/
+
+/*Container do Webgui*/
+.webgui-container {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px; /* Espaço adicional com o rodapé */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between; /* Espaçamento igual entre os elementos */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.webgui-container h3 {
+    color: #e4e4e4;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+/*Fim do Container do Webgui*/
+
+/* Estilos adicionais para a consulta de operadora */
+.consulta-operadora {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre o campo de entrada e o botão */
+}
+
+.consulta-operadora input[type="tel"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 250px; /* Largura do campo de entrada */
+}
+
+.consulta-operadora button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #005c97;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.consulta-operadora button:hover {
+    background-color: #00476d; /* Cor do botão ao passar o mouse */
+}
+
+#resultado-consulta {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Fim dos estilos adicionais para a consulta de operadora */
+
+
+
 .custom-file-label::after {
     content: "Procurar";
 }
 
 .btn-light {
-    background-color: #e4e4e4;
-    color: #4a7550;
+    background-color: #0000008a;
+    color: #ffffff;
     border: none;
     transition: background-color 0.3s ease;
 }
 
+.btn-danger{
+	background-color: #ff00188a;
+	border-color: #c82333 !important;
+}
+
 .btn-light:hover {
-    background-color: #c2d4c0;
-    color: #2e5032;
+    background-color: #000000;
+    color: #ffffff;
 }
 /* Estilos para o container de provisionamento */
 .provisioning-container {
-    background-color: #4a7550; /* Cor de fundo do container */
+    background-color: #4748a130; /* Cor de fundo do container */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -120,7 +427,7 @@ body {
 }
 
 .modal .modal-content {
-    background-color: #3f6a48; /* Cor de fundo do modal, semelhante ao conteúdo principal */
+    background-color: #040404db; /* Cor de fundo do modal, semelhante ao conteúdo principal */
     border: none; /* Remove a borda padrão */
     border-radius: 8px; /* Bordas arredondadas para o modal */
     color: #e4e4e4; /* Cor do texto dentro do modal */
@@ -128,7 +435,7 @@ body {
 }
 
 .modal-header {
-    border-bottom-color: #4a7550; /* Cor da linha de separação */
+    border-bottom-color: #040404db; /* Cor da linha de separação */
 }
 
 .modal-header .close {
@@ -142,53 +449,58 @@ body {
 }
 
 .modal-body {
-    background-color: #2e5032; /* Um verde mais escuro para o corpo do modal */
+    background-color: #0a0a0aeb; /* Um verde mais escuro para o corpo do modal */
     border-radius: 0 0 8px 8px; /* Bordas arredondadas na parte inferior */
 }
 
 .modal-footer {
-    background-color: #4a7550; /* Cor de fundo do rodapé do modal */
+    background-color: #0000006b; /* Cor de fundo do rodapé do modal */
     border-top: none; /* Remove a borda superior */
     text-align: right; /* Alinha os botões à direita */
 }
 
 /* Estilos para os botões dentro do modal */
 .modal-footer .btn {
-    background-color: #e4e4e4; /* Cor de fundo dos botões */
-    color: #4a7550; /* Cor do texto dos botões */
+    background-color: #000000c7; /* Cor de fundo dos botões */
+    color: #ffffff; /* Cor do texto dos botões */
 }
 
 .modal-footer .btn:hover {
-    background-color: #c2d4c0; /* Cor de fundo dos botões ao passar o mouse */
-    color: #2e5032; /* Cor do texto dos botões ao passar o mouse */
+    background-color: #111212f7; /* Cor de fundo dos botões ao passar o mouse */
+    color: #ffffff; /* Cor do texto dos botões ao passar o mouse */
+}
+
+.file-list-container {
+    padding: 0 15px; /* Adiciona preenchimento nas laterais do contêiner */
 }
 
 /* Estilos para a lista de arquivos */
 .file-list-container ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: none; /* Remove estilos de lista padrão */
+    padding: 0; /* Remove preenchimento padrão */
+    margin: 0; /* Remove margens padrão */
 }
 
 .file-list-container li {
-    background-color: #e4e4e4;
-    color: #4a7550;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: #e4e4e478; /* Cor de fundo semitransparente */
+    color: #ffffff; /* Cor do texto */
+    padding: 10px 20px; /* Aumenta o preenchimento interno para afastar do contêiner */
+    margin-bottom: 10px; /* Mantém a margem entre os itens da lista */
+    border-radius: 5px; /* Borda arredondada */
+    display: flex; /* Flex para alinhar o conteúdo */
+    justify-content: space-between; /* Espaço entre o conteúdo */
+    align-items: center; /* Centraliza verticalmente */
 }
 
 .file-list-container button.viewFileBtn {
-    background-color: #4a7550;
+    background-color: #011004b5;  
     color: #e4e4e4;
     border: none;
     transition: background-color 0.3s ease;
 }
 
 .file-list-container button.viewFileBtn:hover {
-    background-color: #3f6a48;
+    background-color: #011004;
 }
 
 /* Estilos para o modal de visualização de arquivo */
@@ -197,7 +509,7 @@ body {
 }
 
 #fileViewModal .modal-content {
-    background-color: #3f6a48; /* Cor de fundo do modal, semelhante ao conteúdo principal */
+    background-color: #000000e0; /* Cor de fundo do modal, semelhante ao conteúdo principal */
     border: none; /* Remove a borda padrão */
     border-radius: 8px; /* Bordas arredondadas para o modal */
     color: #ffffff; /* Cor do texto dentro do modal */

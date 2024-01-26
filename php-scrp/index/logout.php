@@ -9,8 +9,8 @@ session_destroy();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout</title>
-    <link rel="stylesheet" href="/css/principal.css">
-    <link rel="icon" href="favicon-sigmacom.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/img/favicon-sigmacom.png" type="image/png">
     <meta http-equiv="refresh" content="3;url=/login.html">
     
 </head>

@@ -7,20 +7,20 @@
         <link rel="stylesheet" type="text/css" href=css/style.css>
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="icon" href="/img/faavicon-sigmacom.png" type="image/png">
+        <link rel="icon" href="/img/favicon-sigmacom.png" type="image/png">
     </head>
     <body>
         <div class="login-container">
             <img src="/img/logo-200.png" alt="ProvSigma Logo" class="logo">
             <form action="/php-scrp/login/login.php" method="post">
                 <label for="username">Usuário:</label>
-                <input type="text" name="username" required>
+                <input type="text" name="username" placeholder="Digite seu nome de usuário" required="">
                 <label for="password">Senha:</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password" placeholder="Digite a senha de usuário" required="">
                 <input type="submit" value="Login">
             </form>
         </div>
-		<a id="forgotBtn">Esqueci minha senha</a>
+		<a id="forgotBtn" href="/reset">Esqueci minha senha</a>
         <footer>
             <p>@Desenvolvido por Lucas C. <i class="fas fa-code"></i></p>
         </footer>
